@@ -1,31 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions name="someName"
-	targetNamespace="http://www.wstutorial.com/ws/HotelService" xmlns="http://schemas.xmlsoap.org/wsdl/"
-	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.wstutorial.com/ws/HotelService">
+	targetNamespace="http://www.wstutorial.com/ws/HotelService"
+			 xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+			 xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+			 xmlns:tns="http://www.wstutorial.com/ws/HotelService"
+			 xmlns:statuscode="http://hotelservice.com.com/statuscode"
+			 xmlns:tutorialtype="http://hotelservice.com.com/tutorialtype"
+			 xmlns:roomtype="http://hotelservice.com.com/roomtype"
+
+>
 
 	<types>
 		<xs:schema targetNamespace="http://www.wstutorial.com/ws/HotelService">
-			<xs:complexType name="statusCode">
-				<xs:sequence>
-					<xs:element name="code" type="xs:long" />
-				</xs:sequence>
-			</xs:complexType>
-			<xs:complexType name="TutorialType">
-				<xs:all>
-					<xs:element name="id" type="xs:long" />
-					<xs:element name="name" type="xs:string" />
-					<xs:element name="author" type="xs:string" />
-				</xs:all>
-			</xs:complexType>
-			<xs:complexType name="RoomType">
-				<xs:sequence>
-					<xs:element name="RoomNumber" type="xs:string"/>
-					<xs:element name="Type" type="xs:string"/>
-					<xs:element name="Price" type="xs:decimal"/>
-					<!-- Add more elements as needed -->
-				</xs:sequence>
-			</xs:complexType>
+			<xs:import schemaLocation="xsd/StatusCode.xsd" namespace="http://hotelservice.com.com/statuscode"/>
+			<xs:import schemaLocation="xsd/TutorialType.xsd" namespace="http://hotelservice.com.com/tutorialtype"/>
+			<xs:import schemaLocation="xsd/RoomType.xsd" namespace="http://hotelservice.com.com/roomtype"/>
+
+
 
 
 			<!-- Define request and response types for operations -->
@@ -41,7 +34,7 @@
 			<xs:element name="CheckAvailabilityResponse">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="AvailableRooms" type="tns:RoomType" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="AvailableRooms" type="roomtype:RoomType" minOccurs="0" maxOccurs="unbounded"/>
 						<!-- Add more elements as needed -->
 					</xs:sequence>
 				</xs:complexType>

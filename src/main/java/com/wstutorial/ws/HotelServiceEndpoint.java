@@ -1,6 +1,7 @@
 
 package com.wstutorial.ws;
 
+import com.com.hotelservice.roomtype.RoomType;
 import com.wstutorial.ws.hotelservice.*;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
